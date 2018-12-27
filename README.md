@@ -8,3 +8,6 @@
 * gwtent：https://github.com/nikelin/gwtent
 * Hightcharts：http://www.moxiegroup.com/moxieapps/gwt-highcharts/
 * ……
+```
+之前项目大多托管在http://code.google.com/上，可惜早就不能用了。
+```
