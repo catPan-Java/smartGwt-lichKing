@@ -1,7 +1,8 @@
 # smartGwt-lichKing
 基于smartGwt企业级Ajax 开发框架的扩展，整合spring、Gilead4Gwt（hibernate）、gwtent（反射）、Highcharts等，通过实体类注解来定义各种模型。扩展组件使用、数据绑定也就两行代码，还有那么多smartGwt原生组件，你们专心写业务逻辑吧……传说中的开发神器！
 ```
-整合多种gwt的框架，让smartGwt能极简的开发前端UI，能更方便的实现前端UI交互、后端数据交互。目标是成为一个前后端统一的开发平台。
+整合多种gwt的框架，让smartGwt能极简的开发前端UI，能更方便的实现前端UI交互、后端数据交互。
+目标：成为一个前后端统一的开发平台。
 ```
 
 # 各框架网址导航
