@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                            http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+                            http://www.springframework.org/schema/tx 
+                            http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+                            http://www.springframework.org/schema/jee 
+                            http://www.springframework.org/schema/jee/spring-jee-4.3.xsd">
+
+<!-- Hibernate EntityManager Factory -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceXmlLocation" value="classpath:persistence.xml"/>
+    
+        <property name="packagesToScan">
+            <list>
+                <value>ans.client.*</value>
+            </list>
+        </property>
+      <property name="jpaVendorAdapter">
+        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+            <property name="showSql" value="false" />
+            <property name="generateDdl" value="false" />
+            <property name="databasePlatform" value="ans.core.utils.MySQL5DialectUP" />
+<!--            <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />-->
+        </bean>
+    </property>
+		<property name="dataSource" ref="dataSource" />
+    </bean>
+	<bean id="dataSource"
+     class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        
+        <property name="url" value="jdbc:mysql://localhost/anspig?characterEncoding=UTF-8" />
+        <property name="username" value="catPan" />
+        <property name="password" value="catPan123-" />
+        
+  	</bean>
+    
+	<!-- Transaction manager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+  
+  	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+  	
+  	<!-- enable the configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
